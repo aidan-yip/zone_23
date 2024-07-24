@@ -154,6 +154,35 @@ scene("battle", () => {
     music.speed = 1;
   });
 
+  onKeyDown("a", () => {
+    player.move(-PLAYER_SPEED, 0);
+    if (player.pos.x < 0) {
+      player.pos.x = width();
+    }
+  });
+
+  onKeyDown("d", () => {
+    player.move(PLAYER_SPEED, 0);
+    if (player.pos.x > width()) {
+      player.pos.x = 0;
+    }
+  });
+
+  onKeyPress("w", () => {
+    insaneMode = true;
+    music.speed = 2;
+  });
+
+  onKeyRelease("ws", () => {
+    insaneMode = false;
+    music.speed = 1;
+  });
+
+  onKeyRelease("s", () => {
+    insaneMode = false;
+    music.speed = 1;
+  });
+
   player.onCollide("enemy", (e) => {
     destroy(e);
     destroy(player);
