@@ -173,7 +173,7 @@ scene("battle", () => {
     music.speed = 2;
   });
 
-  onKeyRelease("ws", () => {
+  onKeyRelease("w", () => {
     insaneMode = false;
     music.speed = 1;
   });
