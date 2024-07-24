@@ -1,6 +1,7 @@
-Zone 23
+# Zone 23
 
 A space shooter game based on the 80s for the modern era. 
+### NOTE: This game is in development and is not fully functional.
 
-# Made with Kaplay.js:
+## Made with Kaplay.js:
 https://kaplayjs.com
