@@ -4,17 +4,16 @@ kaplay({
   background: [15, 15, 133],
 });
 
-const objs = ["ghosty", "flag", "bag", "key", "bread", "steel", "grass", "stars"];
+const objs = ["ghosty", "flag", "bag", "key", "bread", "steel", "grass", "stars", "ship"];
 
 for (const obj of objs) {
   loadSprite(obj, `./sprites/${obj}.png`);
 }
 
-loadBean();
 loadSound("hit", "./audio/hit.wav");
 loadSound("shoot", "./audio/fire.wav");
 loadSound("explode", "./audio/explode.wav");
-loadSound("OtherworldlyFoe", "/examples/sounds/OtherworldlyFoe.mp3");
+loadSound("OtherworldlyFoe", "./audio/6th.mp3");
 
 scene("battle", () => {
   const BULLET_SPEED = 1200;
@@ -124,7 +123,7 @@ scene("battle", () => {
   });
 
   const player = add([
-    sprite("bag"),
+    sprite("ship"),
     area(),
     pos(width() / 2, height() - 64),
     anchor("center"),
@@ -234,7 +233,7 @@ scene("battle", () => {
     spawnBullet(player.pos.sub(16, 0));
     spawnBullet(player.pos.add(16, 0));
     play("shoot", {
-      volume: 0.3,
+      volume: 0.9,
       detune: rand(-50, 50),
     });
   });
@@ -244,7 +243,7 @@ scene("battle", () => {
       spawnBullet(player.pos.sub(16, 0));
       spawnBullet(player.pos.add(16, 0));
       play("shoot", {
-        volume: 0.3,
+        volume: 0.5,
         detune: rand(-50, 50),
       });
     }
@@ -298,6 +297,7 @@ scene("battle", () => {
     play("hit", {
       detune: rand(-100, 100),
       speed: rand(0.2, 2),
+      volume: 0.8,
     });
   });
 
