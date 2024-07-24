@@ -13,7 +13,7 @@ for (const obj of objs) {
 loadBean();
 loadSound("hit", "./audio/hit.wav");
 loadSound("shoot", "./audio/fire.wav");
-loadSound("explode", "/examples/sounds/explode.mp3");
+loadSound("explode", "./audio/explode.wav");
 loadSound("OtherworldlyFoe", "/examples/sounds/OtherworldlyFoe.mp3");
 
 scene("battle", () => {
@@ -174,11 +174,6 @@ scene("battle", () => {
   });
 
   onKeyRelease("w", () => {
-    insaneMode = false;
-    music.speed = 1;
-  });
-
-  onKeyRelease("s", () => {
     insaneMode = false;
     music.speed = 1;
   });
@@ -374,6 +369,12 @@ scene("battle", () => {
   add([
     text("UP: insane mode", { width: width() / 2, size: 32 }),
     anchor("botleft"),
+    pos(24, height() - 24),
+  ]);
+
+  add([
+    text("SPACE: Shoot", { width: width() / 2, size: 32 }),
+    anchor("botright"),
     pos(24, height() - 24),
   ]);
 
