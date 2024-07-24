@@ -1,4 +1,4 @@
-  TODO: document
+TODO: document;
 
 kaplay({
   background: [15, 15, 133],
@@ -11,8 +11,8 @@ for (const obj of objs) {
 }
 
 loadBean();
-loadSound("hit", "/examples/sounds/hit.mp3");
-loadSound("shoot", "/examples/sounds/shoot.mp3");
+loadSound("hit", "./audio/hit.wav");
+loadSound("shoot", "./audio/fire.wav");
 loadSound("explode", "/examples/sounds/explode.mp3");
 loadSound("OtherworldlyFoe", "/examples/sounds/OtherworldlyFoe.mp3");
 
@@ -102,26 +102,26 @@ scene("battle", () => {
     }
   });
 
-    	add([
-    		sprite("stars"),
-    		scale(width() / 240, height() / 240),
-    		pos(0, 0),
-    		"stars",
-    	])
+  add([
+    sprite("stars"),
+    scale(width() / 240, height() / 240),
+    pos(0, 0),
+    "stars",
+  ]);
 
-    	add([
-    		sprite("stars"),
-    		scale(width() / 240, height() / 240),
-    		pos(0, -height()),
-    		"stars",
-    	])
+  add([
+    sprite("stars"),
+    scale(width() / 240, height() / 240),
+    pos(0, -height()),
+    "stars",
+  ]);
 
-    	onUpdate("stars", (r) => {
-    		r.move(0, STAR_SPEED * (insaneMode ? 10 : 1))
-    		if (r.pos.y >= height()) {
-    			r.pos.y -= height() * 2
-    		}
-    	})
+  onUpdate("stars", (r) => {
+    r.move(0, STAR_SPEED * (insaneMode ? 10 : 1));
+    if (r.pos.y >= height()) {
+      r.pos.y -= height() * 2;
+    }
+  });
 
   const player = add([
     sprite("bag"),
@@ -211,9 +211,29 @@ scene("battle", () => {
     spawnBullet(player.pos.add(16, 0));
     play("shoot", {
       volume: 0.3,
-      detune: rand(-1200, 1200),
+      detune: rand(-50, 50),
     });
   });
+
+  onKeyDown("shift", () => {
+    for (let i = 0; i < 5; i++) {
+      spawnBullet(player.pos.sub(16, 0));
+      spawnBullet(player.pos.add(16, 0));
+      play("shoot", {
+        volume: 0.3,
+        detune: rand(-50, 50),
+      });
+    }
+  });
+
+  /*
+  onKeyDown("space", () => {
+    setTimeout(() => {
+      const Timeout = setTimeout(, 1000);
+      console.log("Get ready in 5 second.");
+    }, "1000");
+  });
+  */
 
   function spawnTrash() {
     const name = choose(objs.filter((n) => n != bossName));
@@ -252,7 +272,7 @@ scene("battle", () => {
   on("hurt", "enemy", (e) => {
     shake(1);
     play("hit", {
-      detune: rand(-1200, 1200),
+      detune: rand(-100, 100),
       speed: rand(0.2, 2),
     });
   });
