@@ -59,7 +59,7 @@ scene("battle", () => {
   }
 
   add([
-    text("KILL", { size: 160 }),
+    text("GET", { size: 160 }),
     pos(width() / 2, height() / 2),
     anchor("center"),
     opacity(),
