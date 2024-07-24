@@ -4,7 +4,7 @@ kaplay({
   background: [15, 15, 133],
 });
 
-const objs = ["ghosty", "flag", "bag", "stars"];
+const objs = ["ghosty", "flag", "bag", "key", "bread", "steel", "grass", "stars"];
 
 for (const obj of objs) {
   loadSprite(obj, `./sprites/${obj}.png`);
