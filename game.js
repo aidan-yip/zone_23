@@ -7,7 +7,7 @@ kaplay({
 const objs = ["ghosty", "flag", "bag"];
 
 for (const obj of objs) {
-  loadSprite(obj, `/sprites/${obj}.png`);
+  loadSprite(obj, `./sprites/${obj}.png`);
 }
 
 loadBean();
