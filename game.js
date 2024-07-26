@@ -167,6 +167,13 @@ scene("battle", () => {
     }
   });
 
+  onTouchMove(() => {
+    player.move(PLAYER_SPEED, 0);
+    if (player.pos.x > width()) {
+      player.pos.x = 0;
+    }
+  });
+
   onKeyPress("w", () => {
     insaneMode = true;
     music.speed = 2;
@@ -247,6 +254,15 @@ scene("battle", () => {
         detune: rand(-50, 50),
       });
     }
+  });
+
+  onTouchStart(() => {
+    spawnBullet(player.pos.sub(16, 0));
+    spawnBullet(player.pos.add(16, 0));
+    play("shoot", {
+      volume: 0.9,
+      detune: rand(-50, 50),
+    });
   });
 
   /*
