@@ -1,14 +1,16 @@
 TODO: document;
 
 kaplay({
-  background: [15, 15, 133],
+  background: [0, 52, 81],
 });
 
-const objs = ["ghosty", "flag", "bag", "key", "bread", "steel", "grass", "stars", "ship"];
+const objs = ["bread","stars",];
 
 for (const obj of objs) {
   loadSprite(obj, `./sprites/${obj}.png`);
 }
+
+loadSprite('ship', 'sprites/ship.png')
 
 loadSound("hit", "./audio/hit.wav");
 loadSound("shoot", "./audio/fire.wav");
@@ -217,12 +219,12 @@ scene("battle", () => {
 
   function spawnBullet(p) {
     add([
-      rect(12, 48),
+      rect(10, 50),
       area(),
       pos(p),
       anchor("center"),
-      color(127, 127, 255),
-      outline(4),
+      color(216, 1, 1),
+      outline(3),
       move(UP, BULLET_SPEED),
       offscreen({ destroy: true }),
       // strings here means a tag
@@ -378,7 +380,7 @@ scene("battle", () => {
       healthbar.color = rgb(255, 255, 255);
       healthbar.flash = false;
     } else {
-      healthbar.color = rgb(127, 255, 127);
+      healthbar.color = rgb(1, 216, 141);
     }
   });
 
